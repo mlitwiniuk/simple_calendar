@@ -2,8 +2,8 @@ module SimpleCalendar
   module ViewHelpers
 
     def calendar(events, options={}, &block)
-      opts = { 
-          :year       => (params[:year] || Time.zone.now.year).to_i, 
+      opts = {
+          :year       => (params[:year] || Time.zone.now.year).to_i,
           :month      => (params[:month] || Time.zone.now.month).to_i,
           :prev_text  => raw("&laquo;"),
           :next_text  => raw("&raquo;")
@@ -62,7 +62,7 @@ module SimpleCalendar
 
               week.collect do |date|
                 td_class = ["day"]
-                td_class << "today" if today == date 
+                td_class << "today" if today == date
                 td_class << "not-currnet-month" if selected_month.month != date.month
                 td_class << "past" if today > date
                 td_class << "future" if today < date
@@ -94,7 +94,7 @@ module SimpleCalendar
 
     # Generates the header that includes the month and next and previous months
     def month_header(selected_month, options)
-      content_tag :h2 do
+      content_tag :h3 do
         previous_month = selected_month.advance :months => -1
         next_month = selected_month.advance :months => 1
         tags = []
